@@ -158,3 +158,56 @@ app.listen(8080);
 
 * Librairie qui permet de faciliter la mise en place d'outils de communication synchrone (un chat par exemple)
     * Se base sur plusieurs technos dont WebSocket (permet un échange bilatéral synchrone entre client et serveur)
+    * Etant donné qu'il est basé sur plusieurs techno, il couvre un bon panel de navigateurs
+
+### Set up
+
+* socket.io doit gérer à la fois le fichier serveur (app.js par exemple) et client (index.ejs)
+
+#### Côté serveur
+
+* En plus du code qui permet de générer une page, il faut une fonction qui écoute la connexion en direct :
+```
+// Require socket.io
+var io = require('socket.io').listen(server);
+
+// Quand un client se connecte, console.log
+io.sockets.on('connection', function (socket) {
+    console.log('Un client est connecté !');
+});
+```
+* __Il y a donc deux connexions du client : une classique (HTTP) et une en temps réel (socket.io)
+
+#### Côté client
+
+* On charge le JS en fin de fichier pour ne pas bloquer le DOM
+* `<script src="/socket.io/socket.io.js"></script>` == Le module `socket.io` fourni par le fichier `socket.io.js` (chemin automatique)
+
+* Une fois le code de gestion de la communication fourni, on peut agir côté client pour communiquer avec le serveur :
+```
+// Connexion simple au serveur
+var socket = io.connect('http://localhost:8080');
+```
+
+### Les échanges
+
+* Il y a deux types d'échanges : le client veut causer au serveur et vice-versa
+
+#### Serveur -> Client
+```
+// On event de connection
+io.sockets.on('connection', function (socket) {
+    // Emit('typeEmit', contenu en string ou objet)
+    socket.emit('message', 'Vous êtes bien connecté !');
+});
+```
+* Il faut paramétrer l'échange avec un listener côté client :
+ ```
+ <script>
+    var socket = io.connect('http://localhost:8080');
+    // On ('typeEvent', CB)
+    socket.on('message', function(message) {
+        alert('Coucou');
+    })
+</script>
+```
