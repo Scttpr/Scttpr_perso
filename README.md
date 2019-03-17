@@ -1,13 +1,15 @@
 # Créer une architecture MVC en 5min
 
-## Script à copier coller dans le terminal pour créer la base d'une architecture MVC
+__/!\ Vous pouvez soit cloner cette branche pour avoir des fichiers vides et bosser ensuite et/ou suivre les commandes suivantes__
+
+> Script à copier coller dans le terminal pour créer la base d'une architecture MVC
 
 * __Depuis l'emplacement dans lequel on veut créer le repo__
 ```
 mkdir app public
 mkdir app/Models app/data app/views app/Controllers app/Utils public/assets
 mkdir public/assets/css public/assets/img public/assets/js
-touch .gitgnore app/.htaccess public/.htaccess app/config.dist.conf app/config.conf app/Controllers/CoreController app/data/.gitkeep app/Models/CoreModel app/views/home.php app/Utils/DBData.php public/index.php public/assets/css/style.css public/assets/img/.gitkeep public/assets/js/.gitkeep README.md
+touch .gitgnore app/.htaccess public/.htaccess app/config.dist.conf app/config.conf app/Controllers/CoreController.php app/data/.gitkeep app/Models/CoreModel.php app/views/home.php app/Utils/DBData.php public/index.php public/assets/css/style.css public/assets/img/.gitkeep public/assets/js/.gitkeep README.md
 composer require altorouter/altorouter
 composer require symfony/var-dumper
 ```
