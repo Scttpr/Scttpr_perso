@@ -65,6 +65,7 @@ var jeu = new EventEmitter();
 
 ## EXPRESS.JS
 
+### Le routing
 * Micro-framework (oui, oui, il faut l'installer comme un module !) pour faciliter la création d'applications (notamment le router & la gestion des vues) :
 ```
 // Require le framework
@@ -87,7 +88,7 @@ app.use(function(req, res, next){
     res.status(404).send('Page introuvable !');
 });
 ```
-* /!\ Express permet de chaîner les appels en utilisant `.get()` dans le `app` :
+* /!\ Express permet de chaîner les appels en utilisant `.get()` :
 ```
 app.get('/', function(req, res) {
 
@@ -96,4 +97,53 @@ app.get('/', function(req, res) {
 .get('/pokemon/:numeroPokemon', function(req, res) {
 
 })
+```
+
+### La gestion des vues
+
+* Il existe pas mal de moteurs de templates (au final c'est un peu ce que fait PHP), c'est-à-dire écrire du HTML en pouvant intégrer du contenu variable
+    * Twig (moteur de template utilisé aussi en PHP) // https://github.com/twigjs/twig.js/wiki
+    * Haml (à l'air plutôt stylé, très dry) // http://haml.info/
+    * Jade (un peu dans le même style mais apparemment encore plus dry :O) // http://jade-lang.com/
+    * EJS (A l'air plus proche d'HTML, surement pas mal pour débuter) // https://www.ejs.co/
+
+* Le code dans l'app transmets les variables à la vue dans la fonction `render` (équivalent de `show`) :
+```
+app.get('/etage/:etagenum/chambre', function(req, res) {
+    res.render('home.ejs', {name: currentName});
+});
+```
+* En EJS cela donne ça :
+```
+<h1>Salut <%= name %></h1>
+```
+* __/!\ Par défaut, Node va chercher les fichiers vues dans le le dossier `views` !__
+
+### Le début de la folie : les MIDDLEWARES
+
+> Doc == http://expressjs.com/en/guide/using-middleware.html
+> Les Middlewares d'Express == http://expressjs.com/en/resources/middleware.html
+
+* __Middlewares__ == Petits morceaux d'application spécialisées, micro-fonctionnalités
+    * Ils communiquent entre eux en se passant maximum 4 params :
+        * err == erreurs
+        * req == requête du visiteur
+        * res == réponse à envoyer
+        * next == CB vers la fonction suivante
+* Comme pour les routes, on peut les chainer et on utilise tout ça avec un petit `app.use()` :
+```
+var express = require('express');
+var monMiddlewareDeLaMuerte = require('monMiddlewareDeLaMuerte');
+
+var app = express();
+
+app.use(monMiddlewareDeLaMuerte()) // Active le middleware
+
+.use(express.static(__dirname + '/public')) // /public contient des fichiers statiques (middleware chargé de base)
+
+.use(function(req, res){ // Réponse
+    res.send('Salut les nazes');
+});
+
+app.listen(8080);
 ```
