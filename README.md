@@ -211,3 +211,23 @@ io.sockets.on('connection', function (socket) {
     })
 </script>
 ```
+
+#### Client -> Serveur
+
+* Ajouter un event qui mobilise un CB qui `socket.emit('typeEmit', 'content')`
+> _Dans le cours OPC, le prof utilise jQuery pour récupérer l'event sur un bouton et lui attribuer une espèce d'eventListener. A RTFM & tester pour le faire directement avec addEventListener_
+
+* Récupérer l'event côté serveur avec un `socket.on('typeEvent', CB)` dans la fonction qui gère la connexion (comme l'Emit au final)
+```    
+io.sockets.on('connection', function (socket) {
+    socket.emit('message', 'Vous êtes bien connecté !');
+
+    // Quand le serveur reçoit un signal de type "message" du client    
+    socket.on('message', function (message) {
+        console.log('Un client me parle ! Il me dit : ' + message);
+    });	
+});
+
+```
+
+#### 
