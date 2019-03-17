@@ -20,8 +20,9 @@
 
 ## Comment push du coup ?
 
+* Crée ton repo perso sur ton profil Github
+* `git remote add repo--perso tonLienSshGithub`
+* `git push repo--perso`
+* Copier-coller le code proposé par le terminal pour initialisé la connexion
+
 # ヾ(●ω●)ノ
-
-Suspense...
-
-# (●⌇ຶ ཅ⌇ຶ●)
