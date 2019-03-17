@@ -147,3 +147,8 @@ app.use(monMiddlewareDeLaMuerte()) // Active le middleware
 
 app.listen(8080);
 ```
+
+## SOCKET.IO
+
+* Librairie qui permet de faciliter la mise en place d'outils de communication synchrone (un chat par exemple)
+    * Se base sur plusieurs technos dont WebSocket (permet un échange bilatéral synchrone entre client et serveur)
