@@ -23,6 +23,6 @@
 * Crée ton repo perso sur ton profil Github
 * `git remote add repo--perso tonLienSshGithub`
 * `git push repo--perso`
-* Copier-coller le code proposé par le terminal pour initialisé la connexion
+* Copier-coller le code proposé par le terminal pour initialiser la connexion
 
 # ヾ(●ω●)ノ
