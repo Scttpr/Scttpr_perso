@@ -1,6 +1,6 @@
 # ლ(͏ ͒ • ꈊ • ͒)ლ
 
-> * __Repo de travail personnel ouvert en lecture__
+> * __Repo de travail ouvert en lecture__
 > * Il contient principalement des README.md et des fichiers de travail venant de tutoriels et de recherches
 
 
