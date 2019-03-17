@@ -1,6 +1,12 @@
 # Découverte de Node.js
 _Notes du cours d'OpenClassRoom sur Node.js_
 
+__/!\ Le début du contenu est en commentaire dans le fichier `server.js`__
+
+## Recap rapide des commentaires
+* Node.js est plus bas-niveau que les autres langages web (php et js côté client)
+* Une application doit elle-même créer son serveur et gérer les réponses et requêtes (voir objet `http`)
+
 ## LES EVENTS
 
 ### Ecouter un événement sur Node
