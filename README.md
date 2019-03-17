@@ -227,7 +227,24 @@ io.sockets.on('connection', function (socket) {
         console.log('Un client me parle ! Il me dit : ' + message);
     });	
 });
-
 ```
 
 #### Le broadcast
+
+* Jusqu'ici on échange des messages d'un client vers un serveur.
+* __Le broadcast envoi un message à tous les clients connectés :__
+```
+socket.broadcast.emit('message', 'Coucou tout le monde');
+```
+
+#### Conserver les données : la session sur socket.io
+
+> https://www.npmjs.com/package/session.socket.io
+
+* Une session pour identifier chaque client et enregistrer leurs infos
+* `session.socket.io` == Middleware de gestion de session sur socket
+
+* __A RTFM__
+
+## LES ERREURS SOUS NODE.JS
+
