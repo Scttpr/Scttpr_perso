@@ -103,3 +103,5 @@ var server = http.createServer(function (req, res) {
 // Le serveur se lance sur le port 8080
 // On évite d'utiliser le port 80 qui est normalement réservé aux serveurs web (il est peut-être déjà utilisé par votre machine). Une fois en production on ira sur le port 80 car c'est à ce port que vos visiteurs iront taper en arrivant sur votre serveur.
 server.listen(8080);
+
+server.close(); // Stop le serveur, déclenche l'event close
