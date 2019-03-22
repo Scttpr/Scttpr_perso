@@ -16,6 +16,8 @@
 | Nom branche | Statut | Contenu | Source |
 | --- | --- | --- | --- |
 | branch--learn-node | En cours | Cours OPC | https://bit.ly/2Q9pbDa |
+| branch--displayHelloWorld-node | OK | Mini exo perso | -- |
+
 | branch--getMvcStructure-PHP | Ok | Structure MVC express | -- |
 
 ## Comment push du coup ?
