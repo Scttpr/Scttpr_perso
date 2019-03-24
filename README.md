@@ -13,12 +13,12 @@
 
 ## Statut actuel
 
-| Nom branche | Statut | Contenu | Source |
-| --- | --- | --- | --- |
-| branch--getMvcStructure-PHP | Ok | Structure MVC express | -- |
-| branch--displayHelloWorld-node | OK | Mini exo perso | -- |
-| branch--learn-node | En cours | Cours OPC | https://bit.ly/2Q9pbDa |
-|  branch--udemy-theCompleteGuide-node  | En cours | The complete guide - UDEMY | https://bit.ly/2CbyIRD |
+| Nom branche | Techno | Statut | Contenu | Source |
+| --- | --- | --- | --- | --- |
+| `branch--getMvcStructure-PHP` | __PHP__ | Ok | Structure MVC express | -- |
+| `branch--displayHelloWorld-node` | __Node Js__ | OK | Mini exo perso | -- |
+| `branch--learn-node` | __Node Js__ | En cours | Cours OPC | https://bit.ly/2Q9pbDa |
+| `branch--udemy-theCompleteGuide-node`  | __Node Js__ | En cours | The complete guide - UDEMY | https://bit.ly/2CbyIRD |
 
 
 ## Comment push du coup ?
