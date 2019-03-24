@@ -15,10 +15,11 @@
 
 | Nom branche | Statut | Contenu | Source |
 | --- | --- | --- | --- |
-| branch--learn-node | En cours | Cours OPC | https://bit.ly/2Q9pbDa |
-| branch--displayHelloWorld-node | OK | Mini exo perso | -- |
-
 | branch--getMvcStructure-PHP | Ok | Structure MVC express | -- |
+| branch--displayHelloWorld-node | OK | Mini exo perso | -- |
+| branch--learn-node | En cours | Cours OPC | https://bit.ly/2Q9pbDa |
+|  branch--udemy-theCompleteGuide-node  | En cours | The complete guide - UDEMY | https://bit.ly/2CbyIRD |
+
 
 ## Comment push du coup ?
 
