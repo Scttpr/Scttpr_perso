@@ -1,7 +1,5 @@
 # UDEMY - LEARN NODE JS
 
-
-
 ## Introduction
 
 NodeJS - The complete Guide, dispensé par Maximilian Schwarzmüller sur la plateforme Udemy. Les notes de cours qui suivent vont de pairs avec les documents attenants qui sont des exercices d'application proposés tout au long du cours. En tant que notes provenant d'un apprenant (coucou), le contenu de ce fichier peut comporter des erreurs de compréhension. Par ailleurs, étant donné que le cours est en anglais, il s'agit d'une traduction _'in my own words'_, méfiance donc.
@@ -9,6 +7,11 @@ NodeJS - The complete Guide, dispensé par Maximilian Schwarzmüller sur la plat
 En ce qui concerne le contenu, je vous laisse explorer l'arborescence de ce README, je saute volontairement la partie d'introduction et la partie optionnelle de révision générale sur JS Vanilla. Pour les personnes les moins à l'aise avec JavaScript, je vous invite à consulter les liens ressources proposés par Maximilian listés ci-dessous.
 
 ### Ressources
+
+> * Official Node.js Docs: https://nodejs.org/en/docs/guides/
+> * Full Node.js Reference (for all core modules): https://nodejs.org/dist/latest/docs/api/
+> * More about the Node.js Event Loop: https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick/
+> * Blocking and Non-Blocking Code: https://nodejs.org/en/docs/guides/dont-block-the-event-loop/
 
 ### Node JS ?
 
