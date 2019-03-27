@@ -1,4 +1,7 @@
+extends layout/header.pug
+
 block content
     h1 Liste des utilisateurs
     ul
-        li Francis
+        each user in users
+            li #{user.name}
