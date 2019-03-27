@@ -1,6 +1,6 @@
 # Créer une architecture MVC en 5min
 
-__/!\ Vous pouvez soit cloner cette branche pour avoir des fichiers vides et bosser ensuite et/ou suivre les commandes suivantes__
+__/!\ Vous pouvez cloner cette branche pour avoir une structure MVC en active record avec les fichiers de base fonctionnelle__
 
 > Script à copier coller dans le terminal pour créer la base d'une architecture MVC
 
