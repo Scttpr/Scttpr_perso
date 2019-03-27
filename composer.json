@@ -1,6 +1,22 @@
 {
+    "name": "scttpr/mvcen5min",
+    "description": "Petit repo pour avoir un MVC sous la main",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Scttpr",
+            "email": "charles.capelli.pro@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
     "require": {
         "altorouter/altorouter": "^1.2",
-        "symfony/var-dumper": "^3.4"
+        "symfony/var-dumper": "*",
+        "benoclock/alto-dispatcher": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
     }
 }

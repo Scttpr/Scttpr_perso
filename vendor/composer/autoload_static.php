@@ -12,6 +12,10 @@ class ComposerStaticInit5631dc4420c4456d0b87b37f141b70df
     );
 
     public static $prefixLengthsPsr4 = array (
+        'a' => 
+        array (
+            'app\\' => 4,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -20,6 +24,10 @@ class ComposerStaticInit5631dc4420c4456d0b87b37f141b70df
     );
 
     public static $prefixDirsPsr4 = array (
+        'app\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -32,6 +40,7 @@ class ComposerStaticInit5631dc4420c4456d0b87b37f141b70df
 
     public static $classMap = array (
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
+        'Dispatcher' => __DIR__ . '/..' . '/benoclock/alto-dispatcher/Dispatcher.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

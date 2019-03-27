@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AltoRouter' => $vendorDir . '/altorouter/altorouter/AltoRouter.php',
+    'Dispatcher' => $vendorDir . '/benoclock/alto-dispatcher/Dispatcher.php',
 );
