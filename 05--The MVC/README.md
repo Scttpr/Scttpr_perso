@@ -70,3 +70,36 @@ module.exports = class Product {
 
 ## Stocker des données dans un fichier via le model
 
+* On utilise plus la variable produit mais un fichier importé
+* `const fs = require('fs');` == Require le module qui permet d'interagir avec les fichiers en local
+* `const path = require('path');` == Require le module pour gérer les chemins
+
+### Dans la fonction save()
+
+* `const p = path.join(rootDir, 'data', 'products.json');` == le chemin vers le fichier
+* `fs.readFile(p, (err, data) => {});` == On commence par lire le fichier et on file un callback :
+```js
+// Interieur du callback :
+let products = [];
+// Si le fichier existe et qu'il n'y a pas d'erreurs, alors products = le contenu du fichier
+if (!err) {
+    products = JSON.parse(data);
+}
+// Pousser la valeur du model dans le tableau
+products.push(this);
+// Ecrire le contenu du tableau dans le fichier
+fi.writeFile(p, JSON.stringify(products), (err) => {console.log(err)});
+```
+
+* Dans la fonction `fetchAll()` on utilise readFile :
+```js
+fs.readFile(p, (err, data) => {
+    if (err) {
+        return [];
+    } else {
+        return JSON.parse(data);
+    }
+});
+```
+
+## Fetch data depuis le Model
