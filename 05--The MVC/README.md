@@ -103,3 +103,8 @@ fs.readFile(p, (err, data) => {
 ```
 
 ## Fetch data depuis le Model
+
+* Etant donné que la fonction readFile s'exécute dans la fonction fetchAll, le code est lu de façon asynchrone et renvoi donc undefined.
+* Pour palier au problème on rajoute un cb en param de la fonction findAll()
+
+* __REVOIR LE COURS 98 & 99__
