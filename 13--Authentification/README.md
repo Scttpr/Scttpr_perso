@@ -1,5 +1,8 @@
 # Authentification
 
+> * https://github.com/dcodeIO/bcrypt.js
+> * https://www.acunetix.com/websitesecurity/csrf-attacks/
+
 ## Qu'est-ce que l'authentification ?
 
 * Permet de gérer les droits d'utilisation sur le site et de créer des groupes d'utilisateurs
