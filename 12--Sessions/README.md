@@ -1,5 +1,9 @@
 # Sessions & cookies
 
+> * https://www.quora.com/What-is-a-session-in-a-Web-Application
+> * https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies
+> * https://github.com/expressjs/session
+
 ## Qu'est-ce qu'un cookie ?
 
 * On peut envoyer une donnée en réponse qui pourra être utilisée ensuite dans les prochaines réponses, un cookie
@@ -63,9 +67,17 @@ const store = new MongoDBStore({
 });
 
 app.use(session({ 
-    secret: 'my scret', 
+    secret: 'my secret', 
     resave: false, 
     saveUnintialized: false,
     store: store
 }));
 ```
+
+## Supprimer un cookie
+
+* Créer une formulaire et des routes pour le logout
+* `req.session.destroy(() => res.redirect('/'));` == Détruit la session courante
+* Le cookie de la session existe toujours et sera overwrite à la prochaien correction, il n'a plus de match côté serveur
+
+* __/!\ param le front pour afficher uniquement si les variables existent (log in, log out, add to cart, etc.)__
