@@ -1,5 +1,8 @@
 # Comprendre la validation (gestion des inputs utilisateurs)
 
+> * https://express-validator.github.io/docs/
+> * https://github.com/chriso/validator.js
+
 ## Pourquoi utiliser la validation
 
 * Les interactions via les inputs ne sont jamais fiables, il faut limiter au maximum les possibilités rentrées par les users pour avoir une meilleure correspondance entre les datas users et les datas en db (on peut rentrer une adresse mail inexistante)
@@ -145,4 +148,32 @@ router.post(
 );
 ```
 
-## Conserver la valeur de l'input
+### Conserver la valeur de l'input
+
+* il suffit d'ajouter les inputs en data à passer à la vue dans les méthodes postSignUp, etc en cas d'erreurs
+
+## Ajouter des classes CSS conditionnelles
+
+* Si on veut passer une data pour faire en sorte que le champ ait une bordure rouge ou verte à la soumission, on peut gérer ça côté back
+* On peut ajouter un array d'erreurs pour de validation d'erreurs à passer à la vue
+* Ensuite côté Front, si on ajoute une classe dynamique en fonction de la data servie côté back:
+```js
+// Dans la  vue et dans la balise input du mail par exemple :
+.#{validationErrors.find(current => current.param === 'email') ? 'invalid' : ''}
+```
+* Il suffit ensuite de traiter la classe en CSS
+
+## Validation pour le log in
+
+* On retrouve la même logique que précédemment, mais il y a en plus les erreurs de correspondance entre les password ou le mail (cf fichier auth.js)
+
+## Nettoyer les données
+
+* Les "sanitizers" == Trim, lowerCase, etc. Permet de stocker les données uniformément
+* Ici on s'attarde sur le côté visuel plus que le côté sécurité (qui sera abordé plus tard)
+* Dans les middlewares de validation dans les routes, il existe des méthodes pour nettoyer les données : .normalizeEmail(), .trim(), ...
+
+### Valider l'addition de produit et l'édition de produit
+
+* Le process est une fois encore le même, cf docs fournis (dans /routes/admin.js /controllers/admin.js, vues)
+* __/!\ Sur le rechargement de la page d'édition il faut refournir l'id du produit !!__
