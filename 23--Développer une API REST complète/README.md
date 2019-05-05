@@ -32,3 +32,55 @@ app.use('/images', express.static(path.join(__dirname, 'images')));
 
 * Utiliser les méthodes PUT & DELETE
 * __cf documents & cours précédent__
+
+## Comment fonctionne l'authentification
+
+* Le client envoi ses data d'authentification au serveur
+* Avant cette requête aurait amené à la creation d'une session, sur une REST API ce n'est pas possible !
+* A la place on retourne un token qui aura des datas validées par le serveur, le token est stocké sur le client et ce token sera attaché à toutes les requêtes suivantes, celui-ci sera validé par le serveur à chaque requête
+* Le token contient du JSON et une signature > JSON web token
+
+* `jsonwebtoken` == module pour créer des JSON web tokens
+* Dans la méthode signin :
+```js
+// Dans la méthode après avoir vérifié le mot de passe
+const token = jwt.sign({
+    email: loadedUser.email,
+    userId: loadedUser._id.toString()
+}, 'maStringSecret', { expiresIn: '1h' });
+```
+
+* Pour l'authentification et la validation du token sur toutes les requêtes : créer un middleware isAuth.js
+* Côté front, il faut ajouter un header Authorization (header pour passer de l'auth au serveur)
+    * headers: {
+        Authorization: 'Bearer' + this.props.token
+    }
+
+* Dans le fichier du middleware :
+```js
+module.exports = (req, res, next) => {
+    const authHeader = req.get('Authorization');
+    if (!authHeader) {
+        // thow err
+    }
+    const token = authHeader.split(' ')[1];
+    let decodedToken;
+    try {
+        decodedToken = jwt.verify(token, 'monSecret')
+    } catch {
+        // throw err
+    }
+    if (!decodedToken) {
+        // throw err
+    }
+    req.userId = decodedToken.userId;
+    next();
+}
+```
+
+* Ajouter le middleware aux routes et passer le token depuis le front sur toutes les fetch (passer le token depuis le front)
+
+## Authorization
+
+* Dans le controller feed :
+    * Ajouter une vérification sur le user connecté correspond au créateur
