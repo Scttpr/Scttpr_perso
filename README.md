@@ -19,7 +19,8 @@
 | `branch--displayHelloWorld-node` | __Node Js__ | OK | Mini exo perso | -- |
 | `branch--learn-node` | __Node Js__ | En cours | Cours OPC | https://bit.ly/2Q9pbDa |
 | `branch--udemy-theCompleteGuide-node`  | __Node Js__ | En cours | The complete guide - UDEMY | https://bit.ly/2CbyIRD |
-
+| `branch--node-exoChat` | __Node Js__ | En cours | API pour travailler websocket | -- |
+| `branch--react-exoChat` | __React Js__ | En cours | Application pour travailler websocket | -- |
 
 ## Comment push du coup ?
 
