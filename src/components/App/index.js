@@ -1,7 +1,7 @@
 // == Import : npm
 import React, { Component } from 'react';
 import axios from 'axios';
-import openSocket from 'socket.io-client';
+import io from 'socket.io-client';
 
 // == Import : local
 import './app.scss';
@@ -16,45 +16,38 @@ class App extends Component {
     chat: [],
   }
 
-  componentDidMount() {
-    axios.get('http://localhost:3000/')
-      .then((result) => {
-        console.log(result.data.messages);
-        this.setState({
-          chat: result.data.messages,
-        });
-      })
-      .catch(err => console.log(err));
+  socket = io('http://localhost:3000/');
 
-    const socket = openSocket('http://localhost:3000');
-    socket.on('posts', data => {
-      const { chat } = this.state;
-      chat.push(data.message);
-      this.setState({
-        chat,
-      });
+  componentDidMount() {
+    this.connectSocket();
+    this.socket.on('newMessage', (data) => {
+      this.updateChat(data);
+    });
+  }
+
+  connectSocket = () => {
+    this.socket.emit('connection');
+    this.socket.on('confirm', (data) => {
+      console.log(data);
+    });
+  }
+
+  updateChat = (data) => {
+    const { chat } = this.state;
+    const newChat = [
+      ...chat,
+      data,
+    ];
+    this.setState({
+      content: '',
+      chat: newChat,
     });
   }
 
   addMessage = (author, content) => {
-    axios.post('http://localhost:3000/', {
-      author,
-      content,
-    })
-      .then((result) => {
-        const { chat } = this.state;
-        this.setState({
-          author: '',
-          content: '',
-          chat: [
-            ...chat,
-            result.data.content,
-          ],
-        });
-      })
-      .catch(err => console.log(err));
+    this.socket.emit('addMessage', { author, content });
   }
-  
+
   setInputChange = (value, name) => {
     this.setState({
       [name]: value,
