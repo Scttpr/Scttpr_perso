@@ -7,7 +7,7 @@ const controller = require('./controller');
 // Router
 const router = express.Router();
 
-router.get('/', controller.getMessages);
+// router.get('/', controller.getMessages);
 router.post('/', controller.postMessage);
 
 module.exports = router;

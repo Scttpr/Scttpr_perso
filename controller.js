@@ -6,12 +6,9 @@ const io = require('./socket');
 const Message = require('./Message');
 
 exports.getMessages = (req, res, next) => {
-    Message.find()
+    Message.find().sort('-createdAt')
         .then(messages => {
-            res.status(200).json({
-                message: 'Fetched messages successfully',
-                messages,
-            });
+            return messages;
         })
         .catch(err => {
             if (!err.statusCode) {
@@ -29,6 +26,7 @@ exports.postMessage = (req, res, next) => {
     const message = new Message({
         author,
         content,
+        createdAt: new Date()
     });
     message.save()
         .then(result => {

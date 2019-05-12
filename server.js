@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // Import local
-const router = require('./router');
+const Message = require('./Message');
 
 // Création de l'app
 const app = express();
@@ -22,7 +22,7 @@ app.use((req, res, next) => {
     });
     
     // Routing
-    app.use(router);
+    // app.use(router);
     
     // Error handler
     app.use((error, req, res, next) => {
@@ -31,7 +31,13 @@ app.use((req, res, next) => {
         const data = error.data;
         res.status(status).json({ message, data })
     }) 
+
     
+    const toto = () => {
+        console.log(Message.find());
+    };
+
+
     // Server & db
     const dbUrl = 'mongodb+srv://Scttpr:Hawaian01@cluster0-2ycpa.mongodb.net/test?retryWrites=true';
     mongoose.connect(dbUrl)
@@ -39,8 +45,23 @@ app.use((req, res, next) => {
             const server = app.listen(3000);
             console.log('server launched');
             const io = require('./socket').init(server);
-            io.on('connection', socket => {
-                console.log('new user');
-            })
+            io.on('connection', (socket) => {
+                console.log(io, socket);
+                console.log('Nouvel utilisateur');
+                io.emit('confirm', 'socket bien connecté');
+                socket.on('addMessage', ({ author, content }) => {
+                    console.log(author, content);
+                    const message = new Message({
+                        author,
+                        content,
+                        createdAt: new Date(),
+                    });
+                    message.save()
+                        .then(result => {
+                            io.emit('newMessage', message);
+                        })
+                        .catch(err => console.log(err));
+                })
+            });
         })
         .catch(err => console.log(err));
