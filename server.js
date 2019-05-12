@@ -38,9 +38,9 @@ app.use((req, res, next) => {
         .then(result => {
             const server = app.listen(3000);
             console.log('server launched');
-            // const io = require('./socket').init(server);
-            // io.on('connexion', socket => {
-            //     console.log('new user');
-            // })
+            const io = require('./socket').init(server);
+            io.on('connexion', socket => {
+                console.log('new user');
+            })
         })
         .catch(err => console.log(err));

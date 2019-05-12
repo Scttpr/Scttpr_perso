@@ -25,18 +25,18 @@ exports.postMessage = (req, res, next) => {
     // GESTION DES ERREURS A METTRE EN PLACE
     const author = req.body.author;
     const content = req.body.content;
-    console.log(author, content);
+    console.log(`Nouveau message : auteur: ${author}, contenu: ${content}`);
     const message = new Message({
         author,
         content,
     });
     message.save()
-        // .then(result => {
-        //     io.getIO().emit('message', {
-        //         action: 'create',
-        //         message,
-        //     });
-        // })
+        .then(result => {
+            io.getIO().emit('posts', {
+                action: 'create',
+                message,
+            });
+        })
         .then(result => {
             res.status(201).json({
                 message: 'Nouveau message ajouté',
