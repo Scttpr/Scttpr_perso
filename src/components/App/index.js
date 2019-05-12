@@ -26,16 +26,13 @@ class App extends Component {
       })
       .catch(err => console.log(err));
 
-    // const socket = openSocket('http://localhost:3000');
-    // const action = 'message';
-    // socket.on((action, data) => {
-    //   this.addMessage(data);
-    // });
-  }
-
-  setInputChange = (value, name) => {
-    this.setState({
-      [name]: value,
+    const socket = openSocket('http://localhost:3000');
+    socket.on('posts', data => {
+      const { chat } = this.state;
+      chat.push(data.message);
+      this.setState({
+        chat,
+      });
     });
   }
 
@@ -47,6 +44,8 @@ class App extends Component {
       .then((result) => {
         const { chat } = this.state;
         this.setState({
+          author: '',
+          content: '',
           chat: [
             ...chat,
             result.data.content,
@@ -54,6 +53,12 @@ class App extends Component {
         });
       })
       .catch(err => console.log(err));
+  }
+  
+  setInputChange = (value, name) => {
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
