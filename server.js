@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 
     // Server & db
-    const dbUrl = 'mongodb+srv://Scttpr:Hawaian01@cluster0-2ycpa.mongodb.net/test?retryWrites=true';
+    const dbUrl = 'mongodb+srv://Scttpr:---@cluster0-2ycpa.mongodb.net/test?retryWrites=true';
     mongoose.connect(dbUrl)
         .then(result => {
             const server = app.listen(3000);
